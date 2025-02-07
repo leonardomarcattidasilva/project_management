@@ -1,5 +1,6 @@
 import React from "react";
 import noImage from '../assets/no-projects.png'
+
 const styles = {
    container: 'text-center w-2/3',
    btn: 'px-6 py-2 rounded-md my-4 bg-stone-800 text-stone-100 hover:bg-stone-950',

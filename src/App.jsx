@@ -28,10 +28,10 @@ const App = () => {
       <SideBar onClick={toggleStatus} />
       <main className={styles.main}>
          {
-            status.projectID === undefined ?
-               <NoProjectSelected onClick={toggleStatus} />
-               :
-               <NewProject onClick={toggleStatus} onCancel={cancelNewProject} />
+            status.projectID === undefined && <NoProjectSelected onClick={toggleStatus} />
+         }
+         {
+            status.projectID === null && <NewProject onClick={toggleStatus} onCancel={cancelNewProject} />
          }
       </main>
    </div>
