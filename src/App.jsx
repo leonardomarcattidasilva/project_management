@@ -24,14 +24,24 @@ const App = () => {
       }
    })
 
+   const addNewProject = (project) => {
+      const newProject = { ...project, id: Math.random() }
+      setStatus(prevState => {
+         return {
+            ...prevState,
+            projects: [...prevState.projects, newProject]
+         }
+      })
+   }
+
    return <div className={styles.container}>
-      <SideBar onClick={toggleStatus} />
+      <SideBar onClick={toggleStatus} projectsList={status.projects} />
       <main className={styles.main}>
          {
             status.projectID === undefined && <NoProjectSelected onClick={toggleStatus} />
          }
          {
-            status.projectID === null && <NewProject onClick={toggleStatus} onCancel={cancelNewProject} />
+            status.projectID === null && <NewProject onClick={toggleStatus} onCancel={cancelNewProject} onAddNewProject={addNewProject} />
          }
       </main>
    </div>
