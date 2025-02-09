@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Input from "./Input";
 import ErrorModal from "./ErrorModal";
+import useAddProject from "../hooks/useAddProject";
 
 const styles = {
    container: 'w-1/2',
@@ -16,26 +17,7 @@ const styles = {
 }
 
 const NewProject = ({ onCancel, onAddNewProject }) => {
-   const titleRef = useRef('')
-   const descriptionRef = useRef('')
-   const deadlineRef = useRef('')
-   const modalRef = useRef()
-   const handleSave = () => {
-      const dataForm = {
-         title: titleRef.current.value,
-         description: descriptionRef.current.value,
-         deadline: deadlineRef.current.value
-      }
-
-      if (dataForm.title.trim() == '' || dataForm.description.trim() == '' || dataForm.deadline.trim() == '') {
-         modalRef.current.open()
-         return null
-      }
-
-      onAddNewProject(dataForm)
-      alert('Project Added!')
-
-   }
+   const { titleRef, descriptionRef, deadlineRef, modalRef, handleSave } = useAddProject(onAddNewProject)
 
    return <>
       <ErrorModal ref={modalRef} className={styles.children}>
