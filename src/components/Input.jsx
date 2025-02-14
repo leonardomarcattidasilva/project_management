@@ -1,5 +1,4 @@
 import React from "react";
-
 const styles = {
    container: 'flex flex-col gap-1 my-4',
    label: 'text-sm font-bold uppercase text-stone-500',
@@ -11,11 +10,12 @@ const Input = ({ label, isTextArea, type, ref }) => {
       <label htmlFor="" className={styles.label}>{label}</label>
       {
          isTextArea ?
-            <textarea name="" id="" color="5" rows={5} className={styles.input} ref={ref}></textarea>
+            <textarea name="" id="" color="5" rows={5} className='minha_classe' ref={ref}></textarea>
             :
-            <input type={type} className={styles.input} ref={ref} />
+            <input type={type} ref={ref} className="minha_classe" />
       }
    </div>
 }
 
 export default Input
+
