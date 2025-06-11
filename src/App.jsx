@@ -1,14 +1,41 @@
-import { useState } from "react";
-import Text from "./components/Text";
+import { useState, useRef } from "react";
+import SideBar from "./components/SideBar";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import NewProject from "./components/NewProject";
+import NoProject from "./components/NoProject";
 
 const App = () => {
-   const [state, setState] = useState(false)
+   const [state, setState] = useState({ selectedProject: undefined, projects: [] })
 
-   const togglestate = () => setState(prevState => !prevState)
+
+   const newProject = () => setState(prevState => {
+      return { ...prevState, selectedProject: null }
+   })
+
+   const cancelNewProject = () => setState(prevState => {
+      return { ...prevState, selectedProject: undefined }
+   })
+
+   const addProject = (newProject) => {
+      setState(prevState => {
+         return { ...prevState, projects: [...prevState.projects, { ...newProject, id: Math.random() }] }
+      })
+   }
+
    return <>
-      <h1>React 19 - {state ? 'True' : 'False'}</h1>
-      <button type="button" onClick={togglestate}>Toggle</button>
-      <Text />
+      <Header />
+      <SideBar onToggle={newProject} />
+      <main className="h-full flex flex-col justify-center items-center">
+         {
+            state.selectedProject === undefined && < NoProject onClick={newProject} />
+         }
+
+         {
+            state.selectedProject === null && <NewProject onClick={cancelNewProject} addProject={addProject} />
+         }
+      </main>
+      <Footer />
    </>
 }
 
