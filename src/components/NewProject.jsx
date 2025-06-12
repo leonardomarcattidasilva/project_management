@@ -16,6 +16,9 @@ const NewProject = ({ onClick, addProject }) => {
       }
 
       addProject({ title, date, description })
+      titleRef.current.value = ''
+      dateRef.current.value = ''
+      descriptionRef.current.value = ''
    }
 
    return <div className="newProject">
