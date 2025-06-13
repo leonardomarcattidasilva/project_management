@@ -101,3 +101,19 @@ menu button {
 .noProjects button {
    @apply px-4 py-2 text-xs rounded-md bg-stone-700 text-stone-400 hover:bg-stone-600 hover:text-stone-100
 }
+
+.dialog {
+   @apply backdrop:bg-stone-900/90 p-4 rounded-md shadow-xl m-auto
+}
+
+.dialog h2 {
+   @apply text-xl font-bold text-stone-600 my-4
+}
+
+.dialog p {
+   @apply text-stone-500 mb-4
+}
+
+.dialog button {
+   @apply px-4 py-2 rounded-md bg-stone-700 text-stone-400 hover:bg-stone-600 hover:text-stone-100 w-full
+}

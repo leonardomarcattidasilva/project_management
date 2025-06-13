@@ -5,12 +5,13 @@ import NewProject from "./components/NewProject";
 import NoProject from "./components/NoProject";
 import useHandleProject from "./hooks/useHandleProjects";
 
+
 const App = () => {
    const { state, setNewProject, cancelNewProject, addProject } = useHandleProject()
 
    return <>
       <Header />
-      <SideBar onToggle={setNewProject} />
+      <SideBar onToggle={setNewProject} projectList={state.projects} />
       <main className="h-full flex flex-col justify-center items-center">
          {
             state.selectedProject === undefined && < NoProject onClick={setNewProject} />

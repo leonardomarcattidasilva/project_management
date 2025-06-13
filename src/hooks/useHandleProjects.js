@@ -1,18 +1,11 @@
 import { useState, useEffect } from "react";
 
 const useHandleProject = () => {
-   const [state, setState] = useState({ selectedProject: undefined, projects: [] })
-
-   useEffect(() => {
+   const [state, setState] = useState(() => {
       const local = JSON.parse(localStorage.getItem('projects'))
-
-      if (local) {
-         setState(prevState => {
-            return { ...prevState, projects: local }
-         })
-      }
-   }, [])
-
+      const projects = local || []
+      return { selectedProject: undefined, projects }
+   })
 
    useEffect(() => {
       localStorage.setItem('projects', JSON.stringify(state.projects))
