@@ -20,13 +20,17 @@ const useHandleProject = () => {
       return { ...prevState, selectedProject: undefined }
    })
 
+   const handleSelectedProject = (id) => setState(prevState => {
+      return { ...prevState, selectedProject: id }
+   })
+
    const addProject = (newProject) => {
       setState(prevState => {
          return { ...prevState, projects: [...prevState.projects, { ...newProject, id: Math.random() }] }
       })
    }
 
-   return { state, setNewProject, cancelNewProject, addProject }
+   return { state, setNewProject, cancelNewProject, addProject, handleSelectedProject }
 }
 
 export default useHandleProject

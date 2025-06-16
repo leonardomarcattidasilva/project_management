@@ -5,7 +5,6 @@ import Modal from "./Modal"
 
 const NewProject = ({ onClick, addProject }) => {
    const { handleSave, titleRef, dateRef, descriptionRef, dialogRef, status } = useNewProjectHook(addProject)
-   console.log(status);
 
    return <>
       <Modal ref={dialogRef} btnText="Close">
@@ -15,11 +14,9 @@ const NewProject = ({ onClick, addProject }) => {
                <p>Something is missing</p>
             </>
          }
+
          {
-            status && <>
-               <h2>Success</h2>
-               <p>Something is OK</p>
-            </>
+            status && <h2>Success</h2>
          }
       </Modal>
       <div className="newProject">
