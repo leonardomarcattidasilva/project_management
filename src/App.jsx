@@ -4,25 +4,26 @@ import Header from "./components/Header";
 import NewProject from "./components/NewProject";
 import NoProject from "./components/NoProject";
 import useHandleProject from "./hooks/useHandleProjects";
+import SelectedProject from "./components/SelectedProject";
 
 
 const App = () => {
-   const { state, setNewProject, cancelNewProject, addProject, handleSelectedProject } = useHandleProject()
+   const { state, setNewProject, cancelNewProject, addProject, handleSelectedProject, selectedProject, deleteProject } = useHandleProject()
 
    return <>
       <Header />
       <SideBar onToggle={setNewProject} projectList={state.projects} onSelect={handleSelectedProject} />
       <main className="h-full flex flex-col justify-center items-center">
          {
-            state.selectedProject === undefined && < NoProject onClick={setNewProject} />
+            state.selectedID === undefined && < NoProject onClick={setNewProject} />
          }
 
          {
-            state.selectedProject === null && <NewProject onClick={cancelNewProject} addProject={addProject} />
+            state.selectedID === null && <NewProject onClick={cancelNewProject} addProject={addProject} />
          }
 
          {
-            state.selectedProject && <p>{state.selectedProject}</p>
+            state.selectedID && <SelectedProject project={selectedProject} onDelete={deleteProject} />
          }
       </main>
       <Footer />

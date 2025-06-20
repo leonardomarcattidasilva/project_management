@@ -16,7 +16,10 @@ const NewProject = ({ onClick, addProject }) => {
          }
 
          {
-            status && <h2>Success</h2>
+            status && <>
+               <h2>Success</h2>
+               <p>New project has been created</p>
+            </>
          }
       </Modal>
       <div className="newProject">

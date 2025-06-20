@@ -104,7 +104,7 @@ menu button {
 }
 
 .dialog {
-   @apply backdrop:bg-stone-900/90 p-4 rounded-md shadow-xl m-auto
+   @apply backdrop:bg-stone-900/90 p-4 rounded-md shadow-xl m-auto w-1/4 text-center
 }
 
 .dialog h2 {
@@ -117,4 +117,36 @@ menu button {
 
 .dialog button {
    @apply px-4 py-2 rounded-md bg-stone-700 text-stone-400 hover:bg-stone-600 hover:text-stone-100 w-full
+}
+
+.projectContainer {
+   @apply w-[35rem] mt-16
+}
+
+.projectContainer > .projectBorder{
+   @apply pb-4 mb-4 border-b-2 border-stone-300
+}
+
+.projectContainer .projectHeader {
+   @apply flex items-center justify-between
+}
+
+.projectContainer .projectHeader > h1 {
+   @apply text-3xl font-bold text-stone-300 mb-2
+}
+
+.projectContainer .projectHeader > h1 {
+   @apply text-3xl font-bold text-stone-400 mb-2
+}
+
+.projectContainer .projectHeader > button {
+   @apply px-4 py-2 rounded-md bg-red-300 text-red-600 hover:text-white hover:bg-red-600
+}
+
+.projectItem {
+   @apply w-full text-left px-2 py-4 rounded-sm my-2 text-stone-400 hover:text-stone-100 hover:bg-stone-700 bg-stone-800
+}
+
+.selectedProject {
+   @apply w-full text-left px-2 py-4 rounded-sm my-2 text-stone-800 hover:text-stone-100 hover:bg-stone-700 bg-stone-300
 }

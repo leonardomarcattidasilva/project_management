@@ -4,7 +4,7 @@ const useHandleProject = () => {
    const [state, setState] = useState(() => {
       const local = JSON.parse(localStorage.getItem('projects'))
       const projects = local || []
-      return { selectedProject: undefined, projects }
+      return { selectedID: undefined, projects }
    })
 
    useEffect(() => {
@@ -13,16 +13,18 @@ const useHandleProject = () => {
 
 
    const setNewProject = () => setState(prevState => {
-      return { ...prevState, selectedProject: null }
+      return { ...prevState, selectedID: null }
    })
 
    const cancelNewProject = () => setState(prevState => {
-      return { ...prevState, selectedProject: undefined }
+      return { ...prevState, selectedID: undefined }
    })
 
    const handleSelectedProject = (id) => setState(prevState => {
-      return { ...prevState, selectedProject: id }
+      return { ...prevState, selectedID: id }
    })
+
+   const selectedProject = state.projects.find(el => el.id == state.selectedID)
 
    const addProject = (newProject) => {
       setState(prevState => {
@@ -30,7 +32,14 @@ const useHandleProject = () => {
       })
    }
 
-   return { state, setNewProject, cancelNewProject, addProject, handleSelectedProject }
+   const deleteProject = (id) => {
+      setState(prevState => {
+         const filteredProjects = prevState.projects.filter(el => el.id != id)
+         return { selectedID: undefined, projects: filteredProjects }
+      })
+   }
+
+   return { state, setNewProject, cancelNewProject, addProject, handleSelectedProject, selectedProject, deleteProject }
 }
 
 export default useHandleProject

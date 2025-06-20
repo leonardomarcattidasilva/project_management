@@ -1,13 +1,16 @@
-const SelectedProject = ({ title, date, description }) => {
-   const fomattedDate = new Date(date.toLocaleString('pt-BR', { year: 'numeric', month: 'short', day: 'numeric' }))
+import { formattedDate } from "../helpers/helpers"
 
-   return <div className="w-[35rem] mt-16">
-      <div className="pb-4 mb-4 border-b-2 border-stone-300">
-         <div className="flex items-center justiy-center">
-            <h1 className="text-3xl font-bold text-stone-300 mb-2">{title}</h1>
-            <button className="text-stone-600 hover:text-stone-950" type="button">Delete</button>
+const SelectedProject = ({ project, onDelete }) => {
+   const { title, description, date } = project
+   const newDate = formattedDate(date)
+
+   return <div className="projectContainer">
+      <div className="projectBorder">
+         <div className="projectHeader">
+            <h1>{title}</h1>
+            <button type="button" onClick={() => onDelete(project.id)}>Delete</button>
          </div>
-         <p className="mb-4 text-stone-400">{fomattedDate}</p>
+         <p className="mb-4 text-stone-400">{newDate}</p>
          <p className="text-stone-600 whitespace-pre-wrap">{description}</p>
          <div>
             TASKS
