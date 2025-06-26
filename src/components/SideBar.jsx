@@ -7,7 +7,9 @@ const SideBar = ({ onToggle, projectList, onSelect, id }) => {
       <ul className="overflow-y-auto grow">
          {
             projectList.map((el) => {
-               return <li onClick={() => onSelect(el.id)} key={el.id} className={id === el.id ? 'selectedProject' : 'projectItem'}>{el.title}</li>
+               return <li onClick={() => onSelect(el.id)} key={el.id} className={id == el.id ? 'selectedProject' : 'projectItem'}>
+                  {el.title}
+               </li>
             })
          }
       </ul>

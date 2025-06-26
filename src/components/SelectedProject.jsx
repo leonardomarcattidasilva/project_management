@@ -1,6 +1,6 @@
 import { formattedDate } from "../helpers/helpers"
-
-const SelectedProject = ({ project, onDelete }) => {
+import Tasks from "./Tasks"
+const SelectedProject = ({ project, onDelete, onAddTask, onDeleteTask }) => {
    const { title, description, date } = project
    const newDate = formattedDate(date)
 
@@ -12,10 +12,8 @@ const SelectedProject = ({ project, onDelete }) => {
          </div>
          <p className="mb-4 text-stone-400">{newDate}</p>
          <p className="text-stone-600 whitespace-pre-wrap">{description}</p>
-         <div>
-            TASKS
-         </div>
       </div>
+      <Tasks onAddTask={onAddTask} onDeleteTask={onDeleteTask} tasks={project.tasks} id={project.id} />
    </div>
 }
 

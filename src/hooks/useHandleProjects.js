@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 
 const useHandleProject = () => {
    const [state, setState] = useState(() => {
-      const local = JSON.parse(localStorage.getItem('projects'))
-      const projects = local || []
+      const localProjects = JSON.parse(localStorage.getItem('projects'))
+      // const localTasks = JSON.parse(localStorage.getItem('tasks'))
+      const projects = localProjects || []
+      // const tasks = localTasks || []
       return { selectedID: undefined, projects }
    })
 
    useEffect(() => {
       localStorage.setItem('projects', JSON.stringify(state.projects))
+      // localStorage.setItem('tasks', JSON.stringify(state.tasks))
    }, [state.projects])
 
 
@@ -28,7 +31,7 @@ const useHandleProject = () => {
 
    const addProject = (newProject) => {
       setState(prevState => {
-         return { ...prevState, projects: [...prevState.projects, { ...newProject, id: Math.random() }] }
+         return { ...prevState, projects: [...prevState.projects, { ...newProject, id: Math.random(), tasks: [] }] }
       })
    }
 
@@ -39,7 +42,44 @@ const useHandleProject = () => {
       })
    }
 
-   return { state, setNewProject, cancelNewProject, addProject, handleSelectedProject, selectedProject, deleteProject }
+   const addTask = (task) => {
+      setState(prevState => {
+         const newTask = { id: Math.random(), task }
+         const updatedProjects = prevState.projects.map(project => {
+            if (project.id === prevState.selectedID) {
+               return {
+                  ...project,
+                  tasks: [newTask, ...project.tasks]
+               }
+            }
+            return project
+         })
+
+         return {
+            ...prevState,
+            projects: updatedProjects
+         }
+      })
+   }
+
+   const deleteTask = (taskID) => {
+      setState(prevState => {
+         const updatedProjects = prevState.projects.map(project => {
+            if (project.id == prevState.selectedID) {
+               const filteredTasks = project.tasks.filter(task => task.id != taskID)
+               console.log(filteredTasks);
+
+               return { ...project, tasks: filteredTasks }
+            }
+            return project
+         })
+         console.log({ ...prevState, projects: updatedProjects });
+
+         return { ...prevState, projects: updatedProjects }
+      })
+   }
+
+   return { state, setNewProject, cancelNewProject, addProject, handleSelectedProject, selectedProject, deleteProject, addTask, deleteTask }
 }
 
 export default useHandleProject
