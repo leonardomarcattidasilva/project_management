@@ -36,6 +36,10 @@ const useHandleProject = () => {
    }
 
    const deleteProject = (id) => {
+      const response = confirm('Are you sure?')
+      if (!response) {
+         return
+      }
       setState(prevState => {
          const filteredProjects = prevState.projects.filter(el => el.id != id)
          return { selectedID: undefined, projects: filteredProjects }
@@ -63,6 +67,10 @@ const useHandleProject = () => {
    }
 
    const deleteTask = (taskID) => {
+      const response = confirm('Are you sure?')
+      if (!response) {
+         return
+      }
       setState(prevState => {
          const updatedProjects = prevState.projects.map(project => {
             if (project.id == prevState.selectedID) {
@@ -73,7 +81,6 @@ const useHandleProject = () => {
             }
             return project
          })
-         console.log({ ...prevState, projects: updatedProjects });
 
          return { ...prevState, projects: updatedProjects }
       })
