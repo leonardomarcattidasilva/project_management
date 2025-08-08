@@ -1,17 +1,14 @@
 import { useState, useEffect } from "react";
 
-const useHandleProject = () => {
+const useHandleProjects = () => {
    const [state, setState] = useState(() => {
       const localProjects = JSON.parse(localStorage.getItem('projects'))
-      // const localTasks = JSON.parse(localStorage.getItem('tasks'))
       const projects = localProjects || []
-      // const tasks = localTasks || []
       return { selectedID: undefined, projects }
    })
 
    useEffect(() => {
       localStorage.setItem('projects', JSON.stringify(state.projects))
-      // localStorage.setItem('tasks', JSON.stringify(state.tasks))
    }, [state.projects])
 
 
@@ -75,8 +72,6 @@ const useHandleProject = () => {
          const updatedProjects = prevState.projects.map(project => {
             if (project.id == prevState.selectedID) {
                const filteredTasks = project.tasks.filter(task => task.id != taskID)
-               console.log(filteredTasks);
-
                return { ...project, tasks: filteredTasks }
             }
             return project
@@ -89,4 +84,4 @@ const useHandleProject = () => {
    return { state, setNewProject, cancelNewProject, addProject, handleSelectedProject, selectedProject, deleteProject, addTask, deleteTask }
 }
 
-export default useHandleProject
+export default useHandleProjects

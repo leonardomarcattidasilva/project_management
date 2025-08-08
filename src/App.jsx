@@ -4,10 +4,10 @@ import Header from "./components/Header";
 import NewProject from "./components/NewProject";
 import NoProject from "./components/NoProject";
 import SelectedProject from "./components/SelectedProject";
-import useHandleProject from "./hooks/useHandleProjects";
+import useHandleProjects from "./hooks/useHandleProjects";
 
 const App = () => {
-   const { state, setNewProject, cancelNewProject, addProject, handleSelectedProject, selectedProject, deleteProject, addTask, deleteTask } = useHandleProject()
+   const { state, setNewProject, cancelNewProject, addProject, handleSelectedProject, selectedProject, deleteProject, addTask, deleteTask } = useHandleProjects()
    return <>
       <Header />
       <SideBar onToggle={setNewProject} projectList={state.projects} onSelect={handleSelectedProject} id={state.selectedID} />

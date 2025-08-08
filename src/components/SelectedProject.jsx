@@ -1,5 +1,6 @@
 import { formattedDate } from "../helpers/helpers"
 import Tasks from "./Tasks"
+
 const SelectedProject = ({ project, onDelete, onAddTask, onDeleteTask }) => {
    const { title, description, date } = project
    const newDate = formattedDate(date)
