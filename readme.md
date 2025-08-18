@@ -20,7 +20,7 @@
 <p>docker build -t todo-app . </p>
 
 <h3>3️⃣ Rodar o container</h3>
-<p>docker run -d -p 3000:3000 --name todo-app todo-app -v pasta_projeto:/my_app</p>
+<p>docker run -d -p 3000:3000 --name todo-app -h todo-app -v pasta_projeto:/my_app todo-app</p>
 
 <h3>4️⃣ Acessar no navegador</h3>
 <p>👉 http://localhost:3000</p>
