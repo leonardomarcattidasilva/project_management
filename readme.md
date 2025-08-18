@@ -13,14 +13,14 @@
 
 <h2>📦 Como rodar o projeto</h2>
 <h3>1️⃣ Clonar o repositório</h3>
-<p>it clone https://github.com/seu-usuario/seu-repositorio.git</p>
-<p>cd seu-repositorio</p>
+<p>git clonehttps://github.com/leonardomarcattidasilva/project_management.git</p>
+<p>cd project_management</p>
 
 <h3>2️⃣ Construir a imagem Docker</h3>
 <p>docker build -t todo-app . </p>
 
 <h3>3️⃣ Rodar o container</h3>
-<p>docker run -d -p 3000:3000 --name todo-app todo-app</p>
+<p>docker run -d -p 3000:3000 --name todo-app todo-app -v pasta_projeto:/my_app</p>
 
 <h3>4️⃣ Acessar no navegador</h3>
 <p>👉 http://localhost:3000</p>
@@ -48,7 +48,7 @@
  <p>┗ 📜 README.md
 
 <h3>🐳 Dockerfile usado</h3>
-<p>FROM node:20-alpine</p>
+<p>FROM node:latest</p>
 <p>WORKDIR /my_app</p>
 <p>COPY . . </p>
 <p>RUN npm install</p>
