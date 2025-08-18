@@ -36,16 +36,16 @@
 <h3>💾 Persistência em memória durante a execução</h3>
 <p>Os dados das tarefas são guardados em localStage</p>
 
-📂 Estrutura do projeto
-📦 projeto-todo
- ┣ 📂 src
- ┃ ┣ 📂 components
- ┃ ┣ 📂 pages
- ┃ ┗ 📜 App.jsx
- ┣ 📜 package.json
- ┣ 📜 tailwind.config.js
- ┣ 📜 Dockerfile
- ┗ 📜 README.md
+<h4>📂 Estrutura do projeto</h4>
+<p>📦 projeto-todo</p>
+ <p>┣ 📂 src</p>
+ <p>┃ ┣ 📂 components</p>
+ <p>┃ ┣ 📂 pages</p>
+ <p>┃ ┗ 📜 App.jsx</p>
+ <p>┣ 📜 package.json</p>
+ <p>┣ 📜 tailwind.config.js</p>
+ <p>┣ 📜 Dockerfile</p>
+ <p>┗ 📜 README.md
 
 <h3>🐳 Dockerfile usado</h3>
 <p>FROM node:20-alpine</p>
