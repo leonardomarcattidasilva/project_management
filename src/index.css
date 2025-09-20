@@ -36,7 +36,7 @@ main {
 aside {
    grid-column: 1/2;
    height: calc(100vh - 80px);
-   @apply bg-stone-900 text-stone-50 rounded-r-xl p-4 text-center flex flex-col
+   @apply bg-stone-900 text-stone-50 rounded-r-sm p-4 text-center flex flex-col
 }
 
 aside h2 {
